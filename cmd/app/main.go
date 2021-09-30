@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"secondlab/cmd"
+	"secondlab/pkg/modulo"
 	"secondlab/pkg/xor"
 )
 
@@ -17,7 +18,11 @@ func main() {
 		}
 		fmt.Printf("The ciphered text: %v\n", output)
 	case 2:
-		fallthrough
+		output, err := modulo.Cipher(conf.Text(), conf.Key())
+		if err != nil {
+			log.Fatalln(err)
+		}
+		fmt.Printf("The ciphered text: %v\n", output)
 	case 3:
 		fallthrough
 	default:
