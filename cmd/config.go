@@ -10,8 +10,8 @@ type Configs struct {
 
 func NewConfigs() *Configs {
 	task := flag.Int("task", 1, "Number of the task to process")
-	text := flag.String("text", "exampletext", "Input text for ciphering")
-	key := flag.String("key", "255", "Key to cipher text with")
+	text := flag.String("text", "255", "Input text for ciphering")
+	key := flag.String("key", "250", "Key to cipher text with")
 	flag.Parse()
 	return &Configs{
 		task: *task,

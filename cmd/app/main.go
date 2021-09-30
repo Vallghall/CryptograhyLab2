@@ -1,15 +1,21 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"secondlab/cmd"
+	"secondlab/pkg/xor"
 )
 
 func main() {
 	conf := cmd.NewConfigs()
 	switch conf.Task() {
 	case 1:
-		fallthrough
+		output, err := xor.Cipher(conf.Text(), conf.Key())
+		if err != nil {
+			log.Fatalln(err)
+		}
+		fmt.Printf("The ciphered text: %v\n", output)
 	case 2:
 		fallthrough
 	case 3:
