@@ -6,14 +6,14 @@ import (
 )
 
 func Cipher(text, key string) (string, error) {
-	input, err := strconv.Atoi(text)
+	input, err := strconv.ParseInt(text, 2, 32)
 	if err != nil {
 		return "", fmt.Errorf("invalid input, original text must be of int type")
 	}
-	intKey, err := strconv.Atoi(key)
+	binKey, err := strconv.ParseInt(key, 2, 32)
 	if err != nil {
 		return "", fmt.Errorf("invalid input, key must be of int type")
 	}
 
-	return fmt.Sprintf("%08b", input^intKey), nil
+	return fmt.Sprintf("%08b", input^binKey), nil
 }
