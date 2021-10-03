@@ -17,10 +17,3 @@ func CipherString(text, key string) (string, error) {
 
 	return fmt.Sprintf("%08b", input^binKey), nil
 }
-
-func CipherInt(text, key []int) []int {
-	for i, sym := range text {
-		text[i] = sym ^ key[i]
-	}
-	return text
-}
