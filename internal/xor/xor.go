@@ -5,7 +5,7 @@ import (
 	"strconv"
 )
 
-func Cipher(text, key string) (string, error) {
+func CipherString(text, key string) (string, error) {
 	input, err := strconv.ParseInt(text, 2, 32)
 	if err != nil {
 		return "", fmt.Errorf("invalid input, original text must be of int type")
@@ -16,4 +16,11 @@ func Cipher(text, key string) (string, error) {
 	}
 
 	return fmt.Sprintf("%08b", input^binKey), nil
+}
+
+func CipherInt(text, key []int) []int {
+	for i, sym := range text {
+		text[i] = sym ^ key[i]
+	}
+	return text
 }
